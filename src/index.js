@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { lat: null };
+
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => this.setState({lat: position.coords.latitude}),
+      (err) => console.log(err)
+    );
+  }
+
+  // React says we have to define render!!
+  render() {
+    return <div>Latitudes: {this.state.lat}</div>;
+  }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <App />,
   document.getElementById('root')
-);
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+)
