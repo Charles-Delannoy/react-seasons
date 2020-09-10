@@ -5,3 +5,8 @@
   line-height: 100vh;
   font-size: 20px;
 }
+
+.container {
+  height: 100vh;
+  padding: 5px;
+}

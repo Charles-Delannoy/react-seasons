@@ -27,8 +27,7 @@ class App extends React.Component {
 
   // }
 
-  // React says we have to define render!!
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div className="error-message">Error: {this.state.errorMessage}</div>
     }
@@ -38,6 +37,15 @@ class App extends React.Component {
     }
 
     return <Spinner message='Waiting geolocation authorization...'/>
+  }
+
+  // React says we have to define render!!
+  render() {
+    return (
+      <div className='container'>
+        {this.renderContent()}
+      </div>
+    );
   }
 }
 
